@@ -2,6 +2,12 @@
 
 A Python module to access the [Squarespace Orders API](https://developers.squarespace.com/commerce-apis/orders-api-overview).
 
+```
+data = store.request_orders()
+for order in data['result']:
+	print(order['orderNumber'])
+```
+
 ## Prerequisites
 
 * A Squarespace website eligible for orders and [API key](https://support.squarespace.com/hc/en-us/articles/236297987-Squarespace-API-keys#toc-orders-api)
