@@ -25,7 +25,7 @@ for order in data['result']:
 ### Using the module
 
 * Add your API key as an environment variable: `export SS_API_KEY=<YOUR_API_KEY>`
-* Import the module: `import sqsp_orders_api`
+* Import the module: `import squarespace_orders_api`
 * Access the API: `store = Squarespace(os.environ.get('SS_API_KEY'))`
 * Request a single order: `order_data = store.request_order(order_id=order_id)`
 * Request latest 50 orders: `order_data = store.request_orders()`
@@ -33,7 +33,7 @@ for order in data['result']:
 
 ## Tests
 
-Running tests: `python3 -m unittest test_sqsp_orders_api.py`
+Running tests: `python3 -m unittest test_squarespace_orders_api.py`
 
 * `test_request_order`: Performs a live request to Squarespace for a given order and compares its json data to the data in `test_order.json`.
 * `test_request_orders`: Performs a live request to Squarespace for the first 50 orders and compares its json data to the data in `test_orders.json`.
