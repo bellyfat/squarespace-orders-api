@@ -12,7 +12,7 @@ for order in data['result']:
 
 * A Squarespace website eligible for orders and [API key](https://support.squarespace.com/hc/en-us/articles/236297987-Squarespace-API-keys#toc-orders-api)
 
-## Accessing the API
+## Getting Started
 
 ### Installation
 
@@ -30,6 +30,39 @@ for order in data['result']:
 * Request a single order: `order_data = store.request_order(order_id=order_id)`
 * Request latest 50 orders: `order_data = store.request_orders()`
 * Access data: `print(order_data['orderNumber'])`
+
+## Making requests
+
+`store = Squarespace(os.environ.get('SS_API_KEY'))`
+
+#### request_order()
+
+* Requests a single order from the Squarespace store.
+* Keyword argument `order_id`: the `orderId` from the Squarespace store.
+* See [Squarespace documentation](https://developers.squarespace.com/commerce-apis/retrieving-an-order) for further details.
+
+#### request_orders()
+
+* Requests a maximum of 50 orders from the Squarespace store.
+* Optional keyword argument `cursor`: A string token, returned from the `pagination.nextPageCursor` of a previous response. Identifies where the next page of results should begin. If this parameter is not present or empty, the first page of order data will be returned.
+* Optional keyword argument `modifiedAfter`: Type: An ISO 8601 date and time string, e.g. `2016-04-10T12:00:00Z`. Time-boxes request to orders that were modified after this time.
+* Optional keyword argument `modifiedBefore`: Type: An ISO 8601 date and time string, e.g. `2016-04-10T12:00:00Z`. Time-boxes request to orders that were modified before this time.
+* Optional keyword argument `fulfillmentStatus`: An enumerated string value of PENDING, FULFILLED, or CANCELED. Used to filter orders according to their fulfillment status.
+* See [Squarespace documentation](https://developers.squarespace.com/commerce-apis/retrieving-all-orders) for further details.
+
+Note that requests must not include multiple keyword arguments, except in the case of `modifiedAfter` and `modifiedBefore`.
+
+#### fulfill_order()
+
+* Sends a fulfillment request to the Squarespace store.
+* Keyword argument `order_id`: specifies the order to update.
+* Keyword argument `shouldSendNotification`: Indicates whether the customer should receive an email notification about the added shipments.
+* Keyword argument `shipDate`: The ISO 8601 date and time representing the moment the shipment occurred.
+* Keyword argument `carrierName`: A string representing the parcel service transporting the shipment.
+* Keyword argument `service`: A string representing the level of service, as offered by the carrier, used for this shipment.
+* Keyword argument `trackingNumber`: A string representing the carrier-generated tracking number.
+* Keyword argument `trackingUrl` (optional): A tracking URL, ideally supplied by the carrier. If this value is provided, it must represent a valid URL.
+* See [Squarespace documentation](https://developers.squarespace.com/commerce-apis/fulfilling-an-order)  for further details.
 
 ## Tests
 
