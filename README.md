@@ -47,7 +47,7 @@ for order in data['result']:
 * Optional keyword argument `cursor`: A string token, returned from the `pagination.nextPageCursor` of a previous response. Identifies where the next page of results should begin. If this parameter is not present or empty, the first page of order data will be returned.
 * Optional keyword argument `modifiedAfter`: Type: An ISO 8601 date and time string, e.g. `2016-04-10T12:00:00Z`. Time-boxes request to orders that were modified after this time.
 * Optional keyword argument `modifiedBefore`: Type: An ISO 8601 date and time string, e.g. `2016-04-10T12:00:00Z`. Time-boxes request to orders that were modified before this time.
-* Optional keyword argument `fulfillmentStatus`: An enumerated string value of PENDING, FULFILLED, or CANCELED. Used to filter orders according to their fulfillment status.
+* Optional keyword argument `fulfillmentStatus`: An enumerated string value of `PENDING`, `FULFILLED`, or `CANCELED`. Used to filter orders according to their fulfillment status.
 * See [Squarespace documentation](https://developers.squarespace.com/commerce-apis/retrieving-all-orders) for further details.
 
 Note that requests must not include multiple keyword arguments, except in the case of `modifiedAfter` and `modifiedBefore`.
